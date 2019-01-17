@@ -7,8 +7,7 @@ export default class Jelly {
 
 
 
-
-    this.cursorSize = 120;
+    this.cursorSize = 50;
     this.cursorColor = '#ff0000';
     this.pos = {
       x: 0,
@@ -19,9 +18,11 @@ export default class Jelly {
 
 
     this.balls = [];
-    this.ballsQuantity = 10;
+    this.ballsQuantity = 20;
     this.ballSize = 2;
     this.ballColor = '#ff6600';
+    this.ballCenterX = 200;
+    this.ballCenterY = 200;
 
 
     this.init();
@@ -32,6 +33,25 @@ export default class Jelly {
     this.getBalls();
     this.drawBalls();
     this._render();
+
+    setTimeout(()=>{
+      // this.balls.forEach(ball =>{
+      //   if (ball.originalX < this.ballCenterX) {
+      //     ball.originalX += 40;
+      //   } else {
+      //     ball.originalX -= 40;
+      //   }
+      //   if (ball.originalY < this.ballCenterY) {
+      //     ball.originalY += 40;
+      //   } else {
+      //     ball.originalY -= 40;
+      //   }
+      //
+      // })
+      // this.ctx.save();
+      // this.ctx.scale(0.9, 0.9);
+      // this.ctx.restore();
+    }, 1000);
   }
 
 
@@ -46,9 +66,14 @@ export default class Jelly {
         //   this.ballSize
         // )
         new Ball(
-          200 + 100*Math.cos(i *  2 * Math.PI / this.ballsQuantity),
-          200 + 100*Math.sin(i *  2 * Math.PI / this.ballsQuantity),
-          this.ballSize
+          this.ballCenterX + 100*Math.cos(i *  2 * Math.PI / this.ballsQuantity),
+          this.ballCenterY + 100*Math.sin(i *  2 * Math.PI / this.ballsQuantity),
+          this.ballSize,
+          this.ballColor,
+          {
+            x: this.ballCenterX,
+            y: this.ballCenterY,
+          }
         )
       );
     }
@@ -90,6 +115,7 @@ export default class Jelly {
       this.ctx.lineTo(ball.x, ball.y);
     });
     this.ctx.closePath();
+    this.ctx.fillStyle = this.ballColor;
     this.ctx.fill();
   }
 
@@ -103,6 +129,8 @@ export default class Jelly {
     }
 
     this.ctx.closePath();
+
+    this.ctx.fillStyle = this.ballColor;
     this.ctx.fill();
   }
 
