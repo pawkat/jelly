@@ -18,7 +18,7 @@ export default class Jelly {
 
 
     this.balls = [];
-    this.ballsQuantity = 20;
+    this.ballsQuantity = 25;
     this.ballSize = 2;
     this.ballColor = '#ff6600';
     this.ballCenterX = 200;
@@ -34,24 +34,6 @@ export default class Jelly {
     this.drawBalls();
     this._render();
 
-    setTimeout(()=>{
-      // this.balls.forEach(ball =>{
-      //   if (ball.originalX < this.ballCenterX) {
-      //     ball.originalX += 40;
-      //   } else {
-      //     ball.originalX -= 40;
-      //   }
-      //   if (ball.originalY < this.ballCenterY) {
-      //     ball.originalY += 40;
-      //   } else {
-      //     ball.originalY -= 40;
-      //   }
-      //
-      // })
-      // this.ctx.save();
-      // this.ctx.scale(0.9, 0.9);
-      // this.ctx.restore();
-    }, 1000);
   }
 
 

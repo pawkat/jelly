@@ -22,7 +22,7 @@ export default class Thing {
     this.shifted = vec2.fromValues(x+Math.random()*2,y+Math.random()*2);
     this.vel = vec2.fromValues(Math.random()*2-1,Math.random()*2-1);
     this.acc = vec2.fromValues(0,0);
-    this.maxForce = 0.05;
+    this.maxForce = 0.03;
     this.maxSpeed = 5;
   }
 
